@@ -9,6 +9,10 @@ const connectDB = require('./utilsServer/connectDb')
 const PORT = process.env.PORT || 3000
 connectDB()
 nextApp.prepare().then(() => {
+    app.use('/api/singup', require('./api/signup'))
+    app.use('/api/auth', require('./api/auth'))
+
+
     app.all('*',
         (req, res) =>
             hadle(req, res)
